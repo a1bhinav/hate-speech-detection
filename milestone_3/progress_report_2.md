@@ -1,20 +1,12 @@
-# BERT-Fine-Tuning-Hate-Speech-Detection
+# Hate Speech Detection in Online Social Media using Transfer Learning
 
-Reference Paper : https://arxiv.org/pdf/1910.12574.pdf
-
+## Progress Report II
 
 ### Introduction
 
 #### Aim
 
-This project's aim is to train a general social media hate-speech classifier and compare multiple models for hate-speech detection. We trained these models on raw (social media) text to classify it between two classes hate_speech and not-hate-speech. 
-
-We use multiple flavours of BERT, such as BERTweet, DistilBERT, BERT Base and RoBERTa, and adapt them to our problem of hate-speech classification.
-
-As a part of our baseline experiments, we use FastText and compare it with other models to see which one performs the best for this particular domain of NLP.
-
-Finally, we used the above mentioned models to classify text from an unseen social media dataset with text from a different dataset from what our model has seen during training. We used this unseen dataset to check how well these models generalize over different variations of social-media text.
-
+Our aim is to train and compare multiple models for hate-speech-detection multi-class-classification problem. We train these models on raw (social media) text to classify it among classes such as `hate_speech`, `offensive_language` and `neither`.
 
 #### Tasks
 
@@ -67,42 +59,23 @@ __Note__: To replicate the results in [data_description.ipynb](https://github.ub
 
 ---
 
-### Word Clouds 
-
-#### All Text (With and without Hatespeech)
-
-![hate_speech_all](notebooks/hate_all.png)
-
-#### Text with Hatespeech
-
-![hate_speech_yes](notebooks/hate_yes.png)
-
-#### Text without Hatespeech
-
-![hate_speech_no](notebooks/hate_no.png)
-
-
-From the results of EDA as shown above, we can clearly see that the text tagged as contains 'hate speech' use many abhorrent terms which the text without hatespeech don't contain. This gives an indication of the kind of data the models are trained on. This also shows that the BERT model's general vocabulary is not enough to detect hate speech in social media domain and we would need to fine tune those models wrt to specific domain data.
-
----
-
 ### Engineering
 
 __1. ``Computing infrastructure``__
 
-Computing infrastructure includes personal computer and Google Colab.
+Our computing infrastructure includes our personal computers and Google Colab.
 
 __2. ``DL-NLP methods``__
 
-We use transfer learning by fine-tuning pre-trained models like BERT, RoBERTa and BERTweet on the dataset for hate speech classification. To compare how well these models perform, `FastText` was set as baseline.
+We use transfer learning by fine-tuning pre-trained models like BERT, RoBERTa and BERTweet on our dataset for hate speech classification. To compare how well these models perform, we set `FastText` as our baseline.
 
 _2.1 [FastText](../notebooks/baseline-fasttext.ipynb)_
 
-FastText was chosen as a baseline as it's a linear model that's very easy and quick to train with good instant good results. Since it's only a linear model, the more advanced models which are going to be tried should perform better because of their more sofisticated understanding of language. It will be difficult for FastText to perform well since comments share a lot of vocabulary regardless of their category.
+FastText was chosen as a baseline as it's a linear model that's very easy and quick to train with good instant good results. Since it's only a linear model, the more advanced models we are going to try should perform better because of their more sofisticated understanding of language. It will be difficult for FastText to perform well since comments share a lot of vocabulary regardless of their category.
 
 _2.2 [BERTweet](../notebooks/BERTweet.ipynb) and [BERTweet large](../notebooks/BERTweet_large.ipynb)_
 
-In the first variant, it was decided to use transfer learning by training the entire pre-trained BERTweet model on the dataset. Smaller model of BERTweet `bertweet-base` (135M parameters), which was trained on 850M tweets, to see the baseline that we can get with our data. Then, we proceeded with larger  model of BERTweet `bertweet-large`, which was trained on 873M English Tweets and has 355M parameters.
+In the first variant, we decided to use transfer learning by training the entire pre-trained BERTweet model on our dataset. We used the smaller model of BERTweet `bertweet-base` (135M parameters), which was trained on 850M tweets, to see the baseline that we can get with our data. Then, we proceeded with larger  model of BERTweet `bertweet-large`, which was trained on 873M English Tweets and has 355M parameters.
 
 _2.3 [DistilBERT](../notebooks/distil_bert.ipynb)_
 
